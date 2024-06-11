@@ -1,0 +1,7 @@
+Hi there, this is a sample text file
+
+this file is
+    going to be sent to the server
+
+end of file
+.

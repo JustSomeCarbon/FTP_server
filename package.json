@@ -1,0 +1,20 @@
+{
+  "name": "ftp_server",
+  "version": "1.0.0",
+  "description": "Simple ftp server",
+  "main": "sender.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ftp",
+    "server"
+  ],
+  "author": "Noe Garcia",
+  "license": "ISC",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "ftp": "^0.3.10",
+    "net": "^1.0.2"
+  }
+}
