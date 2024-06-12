@@ -1,27 +1,13 @@
-const net = require('net');
-const fs = require('fs');
+var Client = require('ftp');
+var fs = require('fs');
 
-let server;
-let  istream = fs.createReadStream("./sender_files/some_file.txt");
-
-server = net.createServer(socket => {
-    socket.pipe(process.stdout);
-    istream.on("readable", function() {
-        let data;
-        while (data = this.read()) {
-            socket.write(data);
-        }
+var c = new Client();
+c.on('ready', function() {
+    c.put('./sender_files/some_file.txt', './receiver_files/output.txt', function(err) {
+        if (err) throw err;
+        c.end();
     });
-
-    istream.on("end", function() {
-        socket.end();
-    });
-
-    socket.on("end", () => {
-        server.close(() => { console.log("\ttransfer done!"); });
-    })
 });
 
-server.listen(8000, '0.0.0.0', () => {
-    console.log("server listening on port 8000\n");
-});
+// connect to localhost:21 as anonymous
+c.connect();
